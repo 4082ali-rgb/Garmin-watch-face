@@ -1,14 +1,14 @@
 # Outlaw HUD – RDR2-style Garmin watch face
 
-A Connect IQ watch face with RDR2-style "core" gauges: three circular cores
-(icon + ring that fills clockwise, red warning when low), drawn in code so it fits
-any round screen.
+A Connect IQ watch face with western-game HUD styling: three round "cores"
+(icon + draining ring, gold when full) in an arc above a compass map, drawn in
+code so it fits any round screen.
 
 | Core | Icon | Shows |
 |------|------|-------|
-| Health | heart | steps toward your daily goal (ring turns red below 25%) |
+| Health | heart | steps toward your daily goal |
 | Stamina | bolt | heart rate (fraction of 190 bpm) |
-| Dead Eye | eye | watch battery (turns gold when full) |
+| Dead Eye | eye | watch battery (gold ring when full) |
 
 ![preview](preview.png)
 
