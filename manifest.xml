@@ -7,27 +7,8 @@
                     name="@Strings.AppName"
                     type="watchface">
         <iq:products>
-            <!-- Round AMOLED / MIP colour watches. Add or remove ids to match your model
-                 (see README: run "Connect IQ: Edit Products" in VS Code). -->
-            <iq:product id="fenix7"/>
-            <iq:product id="fenix7s"/>
-            <iq:product id="fenix7x"/>
-            <iq:product id="fenix7pro"/>
+            <!-- Garmin epix (Gen 2), 416x416 AMOLED. Pro models use different ids (epix2pro42mm/47mm/51mm). -->
             <iq:product id="epix2"/>
-            <iq:product id="epix2pro42mm"/>
-            <iq:product id="epix2pro47mm"/>
-            <iq:product id="epix2pro51mm"/>
-            <iq:product id="fr255"/>
-            <iq:product id="fr255s"/>
-            <iq:product id="fr265"/>
-            <iq:product id="fr265s"/>
-            <iq:product id="fr955"/>
-            <iq:product id="fr965"/>
-            <iq:product id="venu2"/>
-            <iq:product id="venu2plus"/>
-            <iq:product id="venu3"/>
-            <iq:product id="venu3s"/>
-            <iq:product id="vivoactive5"/>
         </iq:products>
         <iq:permissions/>
         <iq:languages/>
