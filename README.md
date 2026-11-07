@@ -35,3 +35,8 @@ to fix small compile errors on the first build.
 Everything is in `source/WallpaperFaceView.mc`: colour constants at the top,
 `drawCore` for the ring, `drawHeart` / `drawBolt` / `drawEye` for the icons.
 A wallpaper bitmap can be drawn at the marked spot in `onUpdate`.
+
+## Adding a logo
+`resources/drawables/logo.png` is a blank placeholder drawn under the time. To use your
+own logo image: `python3 tools/prepare_logo.py your_logo.png` (see the script for an
+optional crop box), then rebuild. If the result is taller than about 65 px, crop tighter.

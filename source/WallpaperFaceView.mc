@@ -7,6 +7,7 @@ import Toybox.System;
 import Toybox.Time;
 import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
+import Toybox.Application;
 
 // "Outlaw HUD": HUD-style watch face inspired by open-world western games.
 // A row of circular cores (icon + draining ring) in an arc above a compass map.
@@ -24,9 +25,14 @@ class WallpaperFaceView extends WatchUi.WatchFace {
     private const INK      = 0x1A1208;
 
     private var _asleep as Boolean = false;
+    private var _logo as BitmapResource? = null;
 
     function initialize() {
         WatchFace.initialize();
+    }
+
+    function onLayout(dc as Dc) as Void {
+        _logo = WatchUi.loadResource(Rez.Drawables.Logo) as BitmapResource;
     }
 
     function onEnterSleep() as Void {
@@ -61,14 +67,19 @@ class WallpaperFaceView extends WatchUi.WatchFace {
         var hrFrac = (hr != null) ? hr.toFloat() / 190.0 : 0.0;
         var batt = System.getSystemStats().battery;
 
-        drawTime(dc, cx, (h * 0.13).toNumber(), 0xF2F2F2);
+        drawTime(dc, cx, (h * 0.10).toNumber(), 0xF2F2F2);
+
+        // Logo slot (resources/drawables/logo.png), centred under the time.
+        if (_logo != null) {
+            dc.drawBitmap(cx - _logo.getWidth() / 2, (h * 0.17).toNumber(), _logo);
+        }
 
         // Cores in an arc: sides lower, centre higher.
-        var r = (w * 0.075).toNumber();
+        var r = (w * 0.065).toNumber();
         var xL = (w * 0.25).toNumber();
         var xR = (w * 0.75).toNumber();
-        var ySide = (h * 0.36).toNumber();
-        var yMid = (h * 0.30).toNumber();
+        var ySide = (h * 0.46).toNumber();
+        var yMid = (h * 0.40).toNumber();
 
         drawCore(dc, xL, ySide, r, stepFrac);
         drawHeart(dc, xL, ySide, r);
@@ -81,7 +92,7 @@ class WallpaperFaceView extends WatchUi.WatchFace {
         drawLabel(dc, cx, yMid + r + 12, (hr != null) ? hr.format("%d") : "--");
         drawLabel(dc, xR, ySide + r + 12, batt.toNumber().format("%d") + "%");
 
-        drawMap(dc, cx, (h * 0.74).toNumber(), (w * 0.27).toNumber(), h);
+        drawMap(dc, cx, (h * 0.77).toNumber(), (w * 0.235).toNumber(), h);
     }
 
     // Core: dark disc, ring that drains (gold when full), gap shows what's used.
