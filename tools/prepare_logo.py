@@ -4,7 +4,7 @@ Usage: python3 tools/prepare_logo.py path/to/your_logo_or_screenshot.png [x0 y0 
 
 - Optional crop box (pixels) if the image contains more than the logo.
 - Near-black pixels become transparent (the face background is black anyway).
-- Output is scaled to 183 px wide (44% of a 416 px screen, the epix Gen 2).
+- Output is scaled to 250 px wide (60% of a 416 px screen, the epix Gen 2).
 Requires Pillow (pip install pillow).
 """
 import sys
@@ -24,7 +24,7 @@ bbox = src.point(lambda v: 255 if v > 60 else 0).convert("L").getbbox()
 if bbox:
     src = src.crop(bbox)
 
-w = 183
+w = 250
 h = round(src.height * w / src.width)
 src = src.resize((w, h), Image.LANCZOS)
 
@@ -36,4 +36,4 @@ for y in range(h):
         a = max(r, g, b)
         o[x, y] = (r, g, b, 0 if a < 40 else 255)
 out.save("resources/drawables/logo.png")
-print("wrote resources/drawables/logo.png", out.size, "(keep height <= ~65 px)")
+print("wrote resources/drawables/logo.png", out.size, "(keep height <= ~90 px)")

@@ -1,14 +1,15 @@
 # Outlaw HUD – RDR2-style Garmin watch face
 
-A Connect IQ watch face with western-game HUD styling: three round "cores"
-(icon + draining ring, gold when full) in an arc above a compass map, drawn in
-code so it fits any round screen.
+A Connect IQ watch face with a western-game HUD layout: time, date, a logo slot,
+and a row of four round cores (HR, STEPS, CAL, BATT) drawn in code, plus an optional
+full-screen wallpaper slot.
 
-| Core | Icon | Shows |
-|------|------|-------|
-| Health | heart | steps toward your daily goal |
-| Stamina | bolt | heart rate (fraction of 190 bpm) |
-| Dead Eye | eye | watch battery (gold ring when full) |
+| Core | Icon | Ring shows |
+|------|------|------------|
+| HR | heart | heart rate (of 190 bpm) |
+| STEPS | bolt | steps toward your daily goal |
+| CAL | eye | calories (of 2,500 kcal) |
+| BATT | battery | watch battery (gold ring when full) |
 
 ![preview](preview.png)
 
@@ -37,9 +38,9 @@ Everything is in `source/WallpaperFaceView.mc`: colour constants at the top,
 A wallpaper bitmap can be drawn at the marked spot in `onUpdate`.
 
 ## Adding a logo
-`resources/drawables/logo.png` is a blank placeholder drawn under the time. To use your
+`resources/drawables/logo.png` is a blank placeholder drawn under the date. To use your
 own logo image: `python3 tools/prepare_logo.py your_logo.png` (see the script for an
-optional crop box), then rebuild. If the result is taller than about 65 px, crop tighter.
+optional crop box), then rebuild. If the result is taller than about 90 px, crop tighter.
 
 ## Adding a wallpaper
 `resources/drawables/wallpaper.png` is a plain black placeholder drawn behind everything
