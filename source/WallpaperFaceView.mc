@@ -26,6 +26,7 @@ class WallpaperFaceView extends WatchUi.WatchFace {
 
     private var _asleep as Boolean = false;
     private var _logo as BitmapResource? = null;
+    private var _wallpaper as BitmapResource? = null;
 
     function initialize() {
         WatchFace.initialize();
@@ -33,6 +34,7 @@ class WallpaperFaceView extends WatchUi.WatchFace {
 
     function onLayout(dc as Dc) as Void {
         _logo = WatchUi.loadResource(Rez.Drawables.Logo) as BitmapResource;
+        _wallpaper = WatchUi.loadResource(Rez.Drawables.Wallpaper) as BitmapResource;
     }
 
     function onEnterSleep() as Void {
@@ -52,7 +54,10 @@ class WallpaperFaceView extends WatchUi.WatchFace {
 
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        // (Future: draw a background wallpaper bitmap here.)
+        // Wallpaper slot (resources/drawables/wallpaper.png), skipped in low-power mode.
+        if (!_asleep && _wallpaper != null) {
+            dc.drawBitmap((w - _wallpaper.getWidth()) / 2, (h - _wallpaper.getHeight()) / 2, _wallpaper);
+        }
 
         if (_asleep) {
             drawTime(dc, cx, (h * 0.45).toNumber(), 0x8A8070);

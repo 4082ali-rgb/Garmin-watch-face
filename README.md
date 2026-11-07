@@ -40,3 +40,9 @@ A wallpaper bitmap can be drawn at the marked spot in `onUpdate`.
 `resources/drawables/logo.png` is a blank placeholder drawn under the time. To use your
 own logo image: `python3 tools/prepare_logo.py your_logo.png` (see the script for an
 optional crop box), then rebuild. If the result is taller than about 65 px, crop tighter.
+
+## Adding a wallpaper
+`resources/drawables/wallpaper.png` is a plain black placeholder drawn behind everything
+(not drawn in low-power mode). Use your own image with
+`python3 tools/prepare_wallpaper.py your_image.jpg [focus_x focus_y] [dim]`, then rebuild.
+Keep your own artwork files out of the repo if you don't own the rights to share them.

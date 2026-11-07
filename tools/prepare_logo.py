@@ -10,7 +10,12 @@ Requires Pillow (pip install pillow).
 import sys
 from PIL import Image
 
-src = Image.open(sys.argv[1]).convert("RGB")
+src = Image.open(sys.argv[1])
+if src.mode in ("RGBA", "LA", "P"):
+    src = src.convert("RGBA")
+    bg = Image.new("RGBA", src.size, (0, 0, 0, 255))
+    src = Image.alpha_composite(bg, src)
+src = src.convert("RGB")
 if len(sys.argv) == 6:
     src = src.crop(tuple(int(v) for v in sys.argv[2:6]))
 
