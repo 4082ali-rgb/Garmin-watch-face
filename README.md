@@ -1,14 +1,14 @@
 # Outlaw HUD – RDR2-style Garmin watch face
 
-A Connect IQ watch face inspired by Red Dead Redemption 2: sunset wallpaper,
-an original cowboy silhouette (no Rockstar artwork) and the three "core" gauges
-around the bezel, all drawn in code so it fits any round screen.
+A Connect IQ watch face with RDR2-style "core" gauges: three circular cores
+(icon + ring that fills clockwise, red warning when low), drawn in code so it fits
+any round screen.
 
-| Core | Colour | Shows |
-|------|--------|-------|
-| Health | red (left) | steps toward your daily goal |
-| Stamina | green (right) | heart rate (fraction of 190 bpm) |
-| Dead Eye | gold (top) | watch battery |
+| Core | Icon | Shows |
+|------|------|-------|
+| Health | heart | steps toward your daily goal (ring turns red below 25%) |
+| Stamina | bolt | heart rate (fraction of 190 bpm) |
+| Dead Eye | eye | watch battery (turns gold when full) |
 
 ![preview](preview.png)
 
@@ -33,6 +33,5 @@ to fix small compile errors on the first build.
 
 ## Customising
 Everything is in `source/WallpaperFaceView.mc`: colour constants at the top,
-`drawScene` for the sunset/silhouette, `drawCore` for the gauges. To use your own
-wallpaper image instead, add it under `resources/drawables` and draw it in `onUpdate`
-before the cores.
+`drawCore` for the ring, `drawHeart` / `drawBolt` / `drawEye` for the icons.
+A wallpaper bitmap can be drawn at the marked spot in `onUpdate`.
