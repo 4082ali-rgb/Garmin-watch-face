@@ -1,8 +1,14 @@
-# Aurora Rings – custom Garmin watch face
+# Outlaw HUD – RDR2-style Garmin watch face
 
-A Connect IQ watch face with a wallpaper drawn entirely in code (concentric
-gradient-coloured arcs on pure black), so it is sharp on any round screen and
-AMOLED-friendly. Shows time, date, heart rate, steps and battery.
+A Connect IQ watch face inspired by Red Dead Redemption 2: sunset wallpaper,
+an original cowboy silhouette (no Rockstar artwork) and the three "core" gauges
+around the bezel, all drawn in code so it fits any round screen.
+
+| Core | Colour | Shows |
+|------|--------|-------|
+| Health | red (left) | steps toward your daily goal |
+| Stamina | green (right) | heart rate (fraction of 190 bpm) |
+| Dead Eye | gold (top) | watch battery |
 
 ![preview](preview.png)
 
@@ -23,10 +29,10 @@ to fix small compile errors on the first build.
    (the manifest lists many round devices; unused ones can be removed).
 5. **Monkey C: Build for Device** → produces `bin/*.prg`.
 6. Plug the watch in by USB and copy the `.prg` into `GARMIN/APPS/` on the watch.
-7. On the watch: hold the face → pick **Aurora Rings**.
+7. On the watch: hold the face → pick **Outlaw HUD**.
 
-## Customising the wallpaper
-Everything is in `source/WallpaperFaceView.mc`:
-- `RING_COLORS` – ring colours (0xRRGGBB)
-- `starts` / `sweeps` in `drawRings` – where each arc begins and how long it is
-- `drawTicks` – bezel tick marks
+## Customising
+Everything is in `source/WallpaperFaceView.mc`: colour constants at the top,
+`drawScene` for the sunset/silhouette, `drawCore` for the gauges. To use your own
+wallpaper image instead, add it under `resources/drawables` and draw it in `onUpdate`
+before the cores.
